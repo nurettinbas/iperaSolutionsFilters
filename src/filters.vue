@@ -13,7 +13,7 @@
       </div>
       <div class="form-row ml-2 mr-2 mt-2">
           <div class="offset-md-10 col-md-2 text-right">
-              <button  type="button" class="btn btn-light" name="button">
+              <button @click="clear()"  type="button" class="btn btn-light" name="button">
                   <i class="fa fa-close"></i>
                    Clear
                </button>
@@ -47,6 +47,11 @@ export default {
       'new-date' : date
   },
   methods : {
+     clear : function(){
+        _.map(this.filters,(filter)=>{
+            return filter.value = '';
+        })
+     },
      load : function(){
          axios
             .get('filters.json')
